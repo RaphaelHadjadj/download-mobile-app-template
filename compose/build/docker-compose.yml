@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    build:
+        image: node:14
+        build: ../..
+        container_name: build
+        env_file:
+            - ../config.env
+        working_dir: /code
+        volumes:
+            - ../../plugins:/code/plugins
+            - ../../public:/code/public
+            - ../../files:/code/files
+
+networks:
+    default:
+        external:
+            name: local

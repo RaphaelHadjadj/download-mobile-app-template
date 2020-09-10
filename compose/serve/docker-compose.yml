@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    dl:
+        image: kyma/docker-nginx
+        container_name: dl
+        # ports:
+        #     - '8888:80'
+        env_file:
+            - ../config.env
+        environment:
+            # Deployment
+            VIRTUAL_PORT: 80
+            VIRTUAL_HOST: dl.example.com
+            LETSENCRYPT_HOST: dl.example.com
+            LETSENCRYPT_EMAIL: contact@example.com
+        volumes:
+            - ../../files:/var/www/files
+            - ../../public:/var/www
+
+networks:
+    default:
+        external:
+            name: local
