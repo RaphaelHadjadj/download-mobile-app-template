@@ -34,7 +34,7 @@ export default () => {
         }
     `);
 
-    const debugging = !!process.env.NODE_ENV;
+    const debugging = !!process.env.DEBUG;
 
     const data = query.site.siteMetadata;
 
